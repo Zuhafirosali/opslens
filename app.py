@@ -99,7 +99,7 @@ Clearly say when something is uncertain.
             data = response.json()
             result = data["candidates"][0]["content"]["parts"][0]["text"]
 
-        elif response and response.status_code == 503:
+        elif response and response.status_code in [429, 503]:
             result = demo_analysis(issue)
 
         elif not error:
