@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpsLens</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .result {
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .error {
+            color: #b00020;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>OpsLens</h1>
+
+    <p class="subtitle">
+        AI-Powered Operational Issue Analyzer
+    </p>
+
+    <div class="card">
+
+        <h2>Describe an operational issue</h2>
+
+        <form method="POST">
+
+            <textarea
+                name="issue"
+                rows="10"
+                placeholder="Example: Three customers reported that their orders arrived late..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Analyze Issue
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if error %}
+
+    <div class="card error">
+        <h2>Error</h2>
+        <pre>{{ error }}</pre>
+    </div>
+
+    {% endif %}
+
+    {% if result %}
+
+    <div class="card">
+
+        <h2>AI Analysis</h2>
+
+        <div class="result">{{ result }}</div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
